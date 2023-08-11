@@ -1,29 +1,63 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { Button, Stack, Typography, TextField } from "@mui/material";
+import Header from "../../components/Header/Header";
 import { useState } from "react";
 
 const LoginPage = () => {
-  const [inpEmailValue, setInpEmailValue] = useState("");
-  const [inpPwdValue, setInpPwdValue] = useState("");
+  const [emailValue, setEmailValue] = useState();
+  const [pwdValue, setPwdValue] = useState();
 
+  function checkUser() {}
+  try {
+    if (!/^\w+@\w+\.[a-z]{2,}$/gm.test(emailValue))
+      throw new Error("incorrect email!");
+    if (pwdValue.length < 8) throw new Error("incorrect password!");
+
+    console.log("successful login!");
+  } catch (error) {
+    console.log(error.message);
+  }
   return (
-    <div>
-      <h1>Login</h1>
+    <>
+      <Header />
 
-      <input
-        type="text"
-        placeholder="Email"
-        onChange={(e) => setInpEmailValue(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        onChange={(e) => setInpPwdValue(e.target.value)}
-      />
+      <Typography variant="h3" textAlign="center">
+        Login
+      </Typography>
 
-      <button onClick={() => console.log(inpEmailValue, inpPwdValue)}>
-        click me
-      </button>
-    </div>
+      <Stack direction="column" alignItems="center">
+        <TextField
+          id="outlined-basic"
+          label="Email"
+          variant="outlined"
+          margin="normal"
+          sx={{ width: 400 }}
+          onChange={(e) => setEmailValue(e.target.value)}
+        />
+        <TextField
+          id="outlined-basic"
+          label="Password"
+          variant="outlined"
+          margin="normal"
+          sx={{ width: 400 }}
+          onChange={(e) => setPwdValue(e.target.value)}
+        />
+
+        <Button variant="outlined" size="large" onClick={checkUser}>
+          Sign In
+        </Button>
+
+        <Typography>
+          No have account?{" "}
+          {
+            <Link to={"/registration"}>
+              <Button>Sign up</Button>
+            </Link>
+          }
+        </Typography>
+      </Stack>
+    </>
   );
 };
 
