@@ -7,8 +7,8 @@ const Header = () => {
     <div>
       <AppBar position="static">
         <Toolbar>
-          <Typography sx={{ flexGrow: 1 }} variant="h6" textAlign="left">
-            Welcome to the SignUp/SignIn pages
+          <Typography sx={{ flexGrow: 1 }} variant="h5" textAlign="left">
+            Welcome!
           </Typography>
 
           <Stack spacing={2} direction="row">

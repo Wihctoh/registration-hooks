@@ -1,29 +1,37 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import { Button, Stack, Typography, TextField } from "@mui/material";
 import Header from "../../components/Header/Header";
-import { useState } from "react";
 
 const LoginPage = () => {
-  const [emailValue, setEmailValue] = useState();
-  const [pwdValue, setPwdValue] = useState();
+  const [inpData, setInpData] = useState({ email: "", pwd: "" });
 
-  function checkUser() {
-    try {
-      if (!/^\w+@\w+\.[a-z]{2,}$/gm.test(emailValue))
-        throw new Error("incorrect email!");
-      if (pwdValue.length < 8) throw new Error("incorrect password!");
+  function doData(e) {
+    const { id, value } = e.target;
 
-      console.log("successful login!");
-    } catch (error) {
-      console.log(error.message);
-    }
+    setInpData({ ...inpData, [id]: value });
   }
+
+  async function show() {
+    const res = await fetch("http://localhost:3001/api/authorize", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(inpData),
+    });
+
+    const json = await res.json();
+
+    console.log(json);
+  }
+
   return (
     <>
       <Header />
 
-      <Typography variant="h3" textAlign="center">
+      <Typography variant="h3" textAlign="center" sx={{ mt: 3 }}>
         Login
       </Typography>
 
@@ -34,7 +42,7 @@ const LoginPage = () => {
           variant="outlined"
           margin="normal"
           sx={{ width: 400 }}
-          onChange={(e) => setEmailValue(e.target.value)}
+          onChange={doData}
         />
         <TextField
           id="pwd"
@@ -43,15 +51,15 @@ const LoginPage = () => {
           margin="normal"
           type="password"
           sx={{ width: 400 }}
-          onChange={(e) => setPwdValue(e.target.value)}
+          onChange={doData}
         />
 
-        <Button variant="outlined" size="large" onClick={checkUser}>
+        <Button variant="outlined" size="large" sx={{ mt: 2 }} onClick={show}>
           Sign In
         </Button>
 
-        <Typography>
-          No have account?{" "}
+        <Typography sx={{ mt: 1 }}>
+          No have account?
           {
             <Link to={"/registration"}>
               <Button>Sign up</Button>
