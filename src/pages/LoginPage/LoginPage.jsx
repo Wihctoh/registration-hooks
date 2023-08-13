@@ -8,15 +8,16 @@ const LoginPage = () => {
   const [emailValue, setEmailValue] = useState();
   const [pwdValue, setPwdValue] = useState();
 
-  function checkUser() {}
-  try {
-    if (!/^\w+@\w+\.[a-z]{2,}$/gm.test(emailValue))
-      throw new Error("incorrect email!");
-    if (pwdValue.length < 8) throw new Error("incorrect password!");
+  function checkUser() {
+    try {
+      if (!/^\w+@\w+\.[a-z]{2,}$/gm.test(emailValue))
+        throw new Error("incorrect email!");
+      if (pwdValue.length < 8) throw new Error("incorrect password!");
 
-    console.log("successful login!");
-  } catch (error) {
-    console.log(error.message);
+      console.log("successful login!");
+    } catch (error) {
+      console.log(error.message);
+    }
   }
   return (
     <>
@@ -28,7 +29,7 @@ const LoginPage = () => {
 
       <Stack direction="column" alignItems="center">
         <TextField
-          id="outlined-basic"
+          id="email"
           label="Email"
           variant="outlined"
           margin="normal"
@@ -36,10 +37,11 @@ const LoginPage = () => {
           onChange={(e) => setEmailValue(e.target.value)}
         />
         <TextField
-          id="outlined-basic"
+          id="pwd"
           label="Password"
           variant="outlined"
           margin="normal"
+          type="password"
           sx={{ width: 400 }}
           onChange={(e) => setPwdValue(e.target.value)}
         />
