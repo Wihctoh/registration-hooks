@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { Button, Stack, Typography, TextField } from "@mui/material";
+import { Button, Typography, TextField } from "@mui/material";
 import Header from "../../components/Header/Header";
+import style from "./LoginPage.module.css";
 
 const LoginPage = () => {
   const [inpData, setInpData] = useState({ email: "", pwd: "" });
@@ -35,7 +36,7 @@ const LoginPage = () => {
         Login
       </Typography>
 
-      <Stack direction="column" alignItems="center">
+      <div className={style.loginForm}>
         <TextField
           id="email"
           label="Email"
@@ -66,7 +67,7 @@ const LoginPage = () => {
             </Link>
           }
         </Typography>
-      </Stack>
+      </div>
     </>
   );
 };
