@@ -8,7 +8,7 @@ const Header = () => {
       <AppBar position="static">
         <Toolbar>
           <Typography sx={{ flexGrow: 1 }} variant="h5" textAlign="left">
-            Welcome!
+            Material-UI
           </Typography>
 
           <Stack spacing={2} direction="row">

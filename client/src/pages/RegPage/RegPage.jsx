@@ -42,7 +42,7 @@ const RegPage = () => {
       <Stack direction="column" alignItems="center">
         <TextField
           id="name"
-          label="Name"
+          label="Name*"
           variant="outlined"
           margin="normal"
           sx={{ width: 400 }}
@@ -50,7 +50,7 @@ const RegPage = () => {
         />
         <TextField
           id="surname"
-          label="Surname"
+          label="Surname*"
           variant="outlined"
           margin="normal"
           sx={{ width: 400 }}
@@ -58,7 +58,7 @@ const RegPage = () => {
         />
         <TextField
           id="email"
-          label="Email"
+          label="Email*"
           variant="outlined"
           margin="normal"
           sx={{ width: 400 }}
@@ -66,7 +66,7 @@ const RegPage = () => {
         />
         <TextField
           id="pwd"
-          label="Password"
+          label="Password*"
           variant="outlined"
           margin="normal"
           type="password"

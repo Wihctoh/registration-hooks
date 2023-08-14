@@ -39,7 +39,7 @@ const LoginPage = () => {
       <div className={style.loginForm}>
         <TextField
           id="email"
-          label="Email"
+          label="Email*"
           variant="outlined"
           margin="normal"
           sx={{ width: 400 }}
@@ -47,7 +47,7 @@ const LoginPage = () => {
         />
         <TextField
           id="pwd"
-          label="Password"
+          label="Password*"
           variant="outlined"
           margin="normal"
           type="password"
