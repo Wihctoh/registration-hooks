@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { Button, Typography, TextField } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import Header from "../../components/Header/Header";
 import style from "./LoginPage.module.css";
+import InputForm from "../../components/InputForm/InputForm";
 
 const LoginPage = () => {
   const [inpData, setInpData] = useState({ email: "", pwd: "" });
@@ -37,22 +38,12 @@ const LoginPage = () => {
       </Typography>
 
       <div className={style.loginForm}>
-        <TextField
-          id="email"
-          label="Email*"
-          variant="outlined"
-          margin="normal"
-          sx={{ width: 400 }}
-          onChange={doData}
-        />
-        <TextField
-          id="pwd"
-          label="Password*"
-          variant="outlined"
-          margin="normal"
-          type="password"
-          sx={{ width: 400 }}
-          onChange={doData}
+        <InputForm
+          data={[
+            { id: "email", label: "Email*", type: "text" },
+            { id: "pwd", label: "Password*", type: "password" },
+          ]}
+          setValue={doData}
         />
 
         <Button variant="outlined" size="large" sx={{ mt: 2 }} onClick={show}>

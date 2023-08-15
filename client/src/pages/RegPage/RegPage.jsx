@@ -1,8 +1,9 @@
 import React from "react";
 import { useState } from "react";
-import { Button, Stack, Typography, TextField } from "@mui/material";
+import { Button, Stack, Typography } from "@mui/material";
 import Header from "../../components/Header/Header";
 import { Link } from "react-router-dom";
+import InputForm from "../../components/InputForm/InputForm";
 
 const RegPage = () => {
   const [inpData, setInpData] = useState({
@@ -40,38 +41,14 @@ const RegPage = () => {
       </Typography>
 
       <Stack direction="column" alignItems="center">
-        <TextField
-          id="name"
-          label="Name*"
-          variant="outlined"
-          margin="normal"
-          sx={{ width: 400 }}
-          onChange={doData}
-        />
-        <TextField
-          id="surname"
-          label="Surname*"
-          variant="outlined"
-          margin="normal"
-          sx={{ width: 400 }}
-          onChange={doData}
-        />
-        <TextField
-          id="email"
-          label="Email*"
-          variant="outlined"
-          margin="normal"
-          sx={{ width: 400 }}
-          onChange={doData}
-        />
-        <TextField
-          id="pwd"
-          label="Password*"
-          variant="outlined"
-          margin="normal"
-          type="password"
-          sx={{ width: 400 }}
-          onChange={doData}
+        <InputForm
+          data={[
+            { id: "name", label: "Name*", type: "text" },
+            { id: "surname", label: "Surname*", type: "text" },
+            { id: "email", label: "Email*", type: "text" },
+            { id: "pwd", label: "Password*", type: "password" },
+          ]}
+          setValue={doData}
         />
 
         <Button variant="outlined" size="large" sx={{ mt: 2 }} onClick={show}>
